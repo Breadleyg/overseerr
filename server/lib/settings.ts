@@ -106,6 +106,11 @@ export interface MainSettings {
   locale: string;
 }
 
+export interface MovieNightSettings {
+  movieNightEnabled: boolean;
+  moviesPerEvent: number;
+}
+
 interface PublicSettings {
   initialized: boolean;
 }
@@ -262,6 +267,7 @@ interface AllSettings {
   vapidPrivate: string;
   main: MainSettings;
   plex: PlexSettings;
+  movienight: MovieNightSettings;
   tautulli: TautulliSettings;
   radarr: RadarrSettings[];
   sonarr: SonarrSettings[];
@@ -308,6 +314,10 @@ class Settings {
         port: 32400,
         useSsl: false,
         libraries: [],
+      },
+      movienight: {
+        movieNightEnabled: false,
+        moviesPerEvent: 4,
       },
       tautulli: {},
       radarr: [],
@@ -448,6 +458,14 @@ class Settings {
 
   set main(data: MainSettings) {
     this.data.main = data;
+  }
+
+  get movienight(): MovieNightSettings {
+    return this.data.movienight;
+  }
+
+  set movienight(data: MovieNightSettings) {
+    this.data.movienight = data;
   }
 
   get plex(): PlexSettings {

@@ -73,6 +73,21 @@ settingsRoutes.post('/main', (req, res) => {
   return res.status(200).json(settings.main);
 });
 
+settingsRoutes.get('/movienight', (_req, res) => {
+  const settings = getSettings();
+
+  res.status(200).json(settings.movienight);
+});
+
+settingsRoutes.post('/movienight/', (req, res) => {
+  const settings = getSettings();
+
+  settings.main = merge(settings.main, req.body);
+  settings.save();
+
+  return res.status(200).json(settings.main);
+});
+
 settingsRoutes.post('/main/regenerate', (req, res, next) => {
   const settings = getSettings();
 

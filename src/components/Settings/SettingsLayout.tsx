@@ -6,6 +6,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
   menuGeneralSettings: 'General',
+  menuMovieNightSettings: 'Movie night',
   menuUsers: 'Users',
   menuPlexSettings: 'Plex',
   menuServices: 'Services',
@@ -27,6 +28,11 @@ const SettingsLayout = ({ children }: SettingsLayoutProps) => {
       text: intl.formatMessage(messages.menuGeneralSettings),
       route: '/settings/main',
       regex: /^\/settings(\/main)?$/,
+    },
+    {
+      text: intl.formatMessage(messages.menuMovieNightSettings),
+      route: '/settings/movienight',
+      regex: /^\/settings\/movienight?$/,
     },
     {
       text: intl.formatMessage(messages.menuUsers),
